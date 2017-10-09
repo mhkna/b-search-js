@@ -33,6 +33,7 @@ def bSearch(val, arr, min = 0, max = arr.length - 1)
   end
 end
 
+
 MERGE SORT
 
 def merge_sort(arr)
@@ -60,6 +61,29 @@ def merge(left, right)
   result.concat(left).concat(right)
 end
 
-merge_sort([10, 3, 4, 9, 6, 5, 1, 2, 3])
+
+QUICK SORT
+
+def quicksort(arr)
+  return arr if arr.length <= 1
+
+  pivot = arr.pop
+  left = []
+  right = []
+  i = 0
+  while i < arr.length
+    if arr[i] < pivot
+      left << arr[i]
+    else
+      right << arr[i]
+    end
+    i += 1
+  end
+
+  sorted_left = quicksort(left)
+  sorted_right = quicksort(right)
+
+  sorted_left.push(pivot).concat(sorted_right)
+end
 
 */
