@@ -1,19 +1,17 @@
-arrayay = [1, 4, 9, 19, 45, 62, 66, 78, 93]
-
-
 const bSearch = (val, arr, smallIndex=0, bigIndex=arr.length-1) => {
-  midIndex = Math.floor((smallIndex + bigIndex) / 2)
-  if (mid < val) {
-
-  } else if (mid > val) {
-
+  if (arr.includes(val)) {
+    let midIndex = Math.floor((smallIndex + bigIndex) / 2)
+    if (val < arr[midIndex]) {
+      return bSearch(val, arr, smallIndex, midIndex-1)
+    } else if (val > arr[midIndex]) {
+      return bSearch(val, arr, midIndex+1, bigIndex)
+    } else {
+      return midIndex;
+    }
   } else {
-    return mid;
+    return "the value is not in the array."
   }
 };
-
-
-bSearch(4, arrayay, min, max)
 
 
 
