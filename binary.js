@@ -17,7 +17,7 @@ const bSearch = (val, arr, smallIndex=0, bigIndex=arr.length-1) => {
 
 
 /*
-arrayay = [1, 4, 9, 19, 45, 62, 66, 78, 93, 99]
+BINARY SEARCH
 
 def bSearch(val, arr, min = 0, max = arr.length - 1)
   unless arr.include?(val)
@@ -33,5 +33,33 @@ def bSearch(val, arr, min = 0, max = arr.length - 1)
   end
 end
 
-p bSearch(3, arrayay)
+MERGE SORT
+
+def merge_sort(arr)
+  return arr if arr.length <= 1
+
+  mid_index = arr.length / 2
+  left = arr[0..mid_index-1]
+  right = arr[mid_index..arr.length]
+
+  sorted_left = merge_sort(left)
+  sorted_right = merge_sort(right)
+
+  merge(sorted_left, sorted_right)
+end
+
+def merge(left, right)
+  result = []
+  until left.empty? || right.empty?
+    if left[0] <= right[0]
+      result << left.shift
+    else
+      result << right.shift
+    end
+  end
+  result.concat(left).concat(right)
+end
+
+merge_sort([10, 3, 4, 9, 6, 5, 1, 2, 3])
+
 */
