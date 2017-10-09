@@ -1,8 +1,8 @@
 arrayay = [1, 4, 9, 19, 45, 62, 66, 78, 93]
 
 
-const bSearch = (val, arr, min, max) => {
-  mid = midVal(arr)
+const bSearch = (val, arr, smallIndex=0, bigIndex=arr.length-1) => {
+  midIndex = Math.floor((smallIndex + bigIndex) / 2)
   if (mid < val) {
 
   } else if (mid > val) {
@@ -12,13 +12,6 @@ const bSearch = (val, arr, min, max) => {
   }
 };
 
-const midIndex = (arr) => {
-  return Math.floor(arr.length / 2)
-};
-
-const midVal = (arr) => {
-  return arr[midIndex(arr)]
-};
 
 bSearch(4, arrayay, min, max)
 
