@@ -1,4 +1,5 @@
- class LinkedList {
+//linkedlist
+class LinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
@@ -75,7 +76,7 @@ class Node {
 }
 
 
-
+//arraylist
 class ArrayList {
   constructor() {
     this.length = 0;
@@ -103,4 +104,87 @@ class ArrayList {
     delete this.data[this.length-1];
     this.length--;
   }
+}
+
+
+//binary serach
+class Tree {
+  constructor() {
+    this.root = null;
+  }
+  toObject() {
+    return this.root;
+  }
+  add(value) {
+    if (this.root === null) {
+      // if no head, create new head
+      this.root = new Node(value);
+      return;
+    }
+
+    let current = this.root;
+    while(true) {
+      if (current.value > value) {
+        //go left
+
+        if (current.left) {
+          current = current.left;
+        }
+        else {
+          current.left = new Node(value);
+          break;
+        }
+      }
+      else {
+        //go right
+
+        if (current.right) {
+          current = current.right;
+        }
+        else {
+          current.right = new Node(value);
+          break;
+        }
+      }
+    }
+  }
+}
+
+class Node {
+  constructor(value, left=null, right=null) {
+    this.value = value;
+    this.left = left;
+    this.right = right;
+  }
+}
+
+
+//map internal
+const myMap = (array, fn) => {
+  const answer = [];
+  for (let i = 0; i < array.length; i++) {
+    answer.push(fn(array[i]));
+  }
+  return answer;
+};
+
+//reduce internal
+const myReduce = (list, fn, seed) => {
+  let answer = seed;
+  for (let i = 0; i < list.length; i++) {
+    answer = fn(answer, list[i]);
+  }
+  return answer;
+};
+
+//filter internal
+// ex. const filterOutOdds = nums => nums.filter(num => num % 2 === 0);
+const myFilter = (list, fn) => {
+  const answer = [];
+  for (let i = 0; i < list.length; i++) {
+    if (fn(list[i])) {
+      answer.push(list[i]);
+    }
+  }
+  return answer;
 }
