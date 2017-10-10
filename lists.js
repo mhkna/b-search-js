@@ -16,7 +16,7 @@
     this.tail = node;
   }
   pop() {
-
+    return this.delete(this.length-1);
   }
   _find(value, test=this._test) {
     let current = this.head;
@@ -42,11 +42,28 @@
   _testIndex(search, dontCare, i) {
     return search === i;
   }
-  get(index) {
-
-  }
   delete(index) {
+    if (index === 0) {
+      const head = this.head;
+      if (head) {
+        this.head = head.next;
+      }
+      else {
+        this.tail = this.head = null;
+      }
+      this.length--;
+      return head.value;
+    }
 
+    const node = this._find(index-1, this._testIndex);
+    const excise = node.next;
+    if (!excise) return null;
+    node.next = excise.next;
+    if (node.next && !node.next.next) {
+      this.tail = node.next;
+    }
+    this.length--;
+    return excise.value;
   }
 }
 
