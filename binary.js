@@ -86,4 +86,37 @@ def quicksort(arr)
   sorted_left.push(pivot).concat(sorted_right)
 end
 
+
+
+
+
+NEG POS SKILLD EX
+arr = [-3, -2, -1, 0, 1, 2, 4]
+
+def square_sort(arr)
+  split = arr.partition { |num| num >= 0 }
+  positives = split[0]
+  negatives = split[1]
+
+  abs_neg = negatives.reverse.map do |neg|
+    neg.abs
+  end
+
+  sorted_arr = []
+  until positives.empty? || abs_neg.empty?
+    if positives[0] < abs_neg[0]
+      sorted_arr << positives.shift
+    else
+      sorted_arr << abs_neg.shift
+    end
+  end
+  sorted_arr.concat(positives).concat(abs_neg)
+
+  squared = sorted_arr.map do |num|
+    num ** 2
+  end
+  squared
+end
+
+square_sort(arr)
 */
